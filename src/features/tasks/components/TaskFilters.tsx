@@ -4,14 +4,9 @@ import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 import { ReloadOutlined } from '@ant-design/icons'
 import { useDebouncedCallback } from '@/hooks/useDebouncedCallback'
-import {
-  TASK_PRIORITIES,
-  TASK_STATUSES,
-  type TaskPriority,
-  type TaskStatus,
-} from '../types'
+import type { TaskPriority, TaskStatus } from '../types'
 import type { TaskFilters as TaskFiltersState } from '../store/tasksSlice'
-import { PRIORITY_META, STATUS_META } from '../utils/taskMeta'
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../utils/taskMeta'
 
 const { Text } = Typography
 
@@ -87,10 +82,7 @@ export function TaskFilters({
           onChange={(status: TaskStatus[]) => onFilterChange({ status })}
           placeholder="All statuses"
           className="min-w-[190px]"
-          options={TASK_STATUSES.map((value) => ({
-            value,
-            label: STATUS_META[value].label,
-          }))}
+          options={STATUS_OPTIONS}
         />
 
         <Select<TaskPriority[]>
@@ -101,10 +93,7 @@ export function TaskFilters({
           onChange={(priority: TaskPriority[]) => onFilterChange({ priority })}
           placeholder="All priorities"
           className="min-w-[190px]"
-          options={TASK_PRIORITIES.map((value) => ({
-            value,
-            label: PRIORITY_META[value].label,
-          }))}
+          options={PRIORITY_OPTIONS}
         />
 
         <RangePicker

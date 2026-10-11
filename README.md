@@ -60,6 +60,10 @@ Run a single file: `npx vitest run src/features/tasks/store/selectors.test.ts`.
   be shared and the browser back/forward buttons work.
 - **Theming** — light/dark switch persisted to `localStorage` and reflected via
   Tailwind's `dark:` variant plus antd's `darkAlgorithm`.
+- **Loading & empty states** — `StatCard` and `TaskTable` accept a `loading`
+  prop (antd skeleton / table spinner) and `TaskTable` / `BreakdownCard` render
+  antd `Empty` placeholders when there is nothing to show. The seed data is
+  synchronous, so the spinner stays idle until the data source is async.
 
 ## Project structure
 

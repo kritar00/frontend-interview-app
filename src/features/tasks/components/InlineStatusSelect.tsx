@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Select, Tooltip } from 'antd'
-import { TASK_STATUSES, type TaskStatus } from '../types'
-import { STATUS_META } from '../utils/taskMeta'
+import type { TaskStatus } from '../types'
+import { STATUS_OPTIONS } from '../utils/taskMeta'
 import { TaskStatusTag } from './tags'
 
 export interface InlineStatusSelectProps {
@@ -44,10 +44,7 @@ export function InlineStatusSelect({
         setEditing(false)
       }}
       onBlur={() => setEditing(false)}
-      options={TASK_STATUSES.map((value) => ({
-        value,
-        label: STATUS_META[value].label,
-      }))}
+      options={STATUS_OPTIONS}
       className="!w-auto !min-w-[120px] !shadow-none"
       popupMatchSelectWidth={false}
     />

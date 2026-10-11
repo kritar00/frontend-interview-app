@@ -5,14 +5,12 @@ import dayjs from 'dayjs'
 import { useAppDispatch } from '@/app/hooks'
 import { addTask, updateTask } from '../store/tasksSlice'
 import {
-  TASK_PRIORITIES,
-  TASK_STATUSES,
   type NewTask,
   type Task,
   type TaskPriority,
   type TaskStatus,
 } from '../types'
-import { PRIORITY_META, STATUS_META } from '../utils/taskMeta'
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../utils/taskMeta'
 
 interface TaskFormValues {
   title: string
@@ -126,10 +124,7 @@ export function TaskFormModal({
         <div className="grid grid-cols-1 gap-x-4 sm:grid-cols-2">
           <Form.Item name="status" label="Status" rules={[{ required: true }]}>
             <Select
-              options={TASK_STATUSES.map((value) => ({
-                value,
-                label: STATUS_META[value].label,
-              }))}
+              options={STATUS_OPTIONS}
             />
           </Form.Item>
 
@@ -143,10 +138,7 @@ export function TaskFormModal({
             <Radio.Group
               optionType="button"
               buttonStyle="solid"
-              options={TASK_PRIORITIES.map((value) => ({
-                value,
-                label: PRIORITY_META[value].label,
-              }))}
+              options={PRIORITY_OPTIONS}
             />
           </Form.Item>
 
